@@ -1,0 +1,21 @@
+
+/* Estilos para la tabla dentro del modal */
+.estilos_generales {
+    margin: auto; /* Centra la tabla horizontalmente */
+    width: 90%; /* Ancho máximo de la tabla */
+    border-collapse: collapse; /* Combina los bordes de las celdas */
+    font-family: 'Roboto', Arial, sans-serif; /* Tipo de fuente para toda la tabla */
+}
+
+/* Estilos para las celdas del encabezado */
+.estilos_generales th {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 12px 15px;
+}
+
+/* Estilos para las celdas de datos */
+.estilos_generales td {
+    padding: 8px; /* Espaciado interno dentro de las celdas de datos */
+    font-size: 14px; /* Tamaño de la fuente para las celdas de datos */
+}

@@ -1,0 +1,42 @@
+/* Estilos para el contenedor de WhatsApp */
+.whatsapp-container {
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    background-color: #25D366; /* Color de fondo de WhatsApp */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 2; /* Asegura que WhatsApp esté encima de Telegram */
+}
+
+/* Estilos para el contenedor de Telegram */
+.telegram-container {
+    position: fixed;
+    bottom: 65px; /* Ajusta la posición para que esté debajo de WhatsApp */
+    right: 16px;
+    background-color: #0088cc; /* Color de fondo de Telegram */
+    padding: 12px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1; /* Asegura que Telegram esté debajo de WhatsApp */
+}
+
+/* Estilos para el enlace de WhatsApp y Telegram */
+.whatsapp-link, .telegram-link {
+    text-decoration: none;
+    color: #fff; /* Color del texto */
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos para el ícono de WhatsApp y Telegram */
+.whatsapp-icon, .telegram-icon {
+    font-size: 24px; /* Tamaño del ícono */
+    margin-right: 10px;
+}
+
+/* Estilos para el texto de WhatsApp y Telegram */
+.whatsapp-text, .telegram-text {
+    font-size: 14px;
+}
