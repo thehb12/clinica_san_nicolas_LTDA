@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Certificado Laboral</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+
+            height: 4%;
+        }
+
+
+        .image-container img {
+            width: 90px; /* Ajusta el tamaño de la imagen según sea necesario */
+            height: auto; /* Mantiene la proporción de aspecto */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Apila los elementos verticalmente en dispositivos pequeños */
+            }
+
+        }
+
+        .contenido {
+            margin-top: 2.54cm; /* Margen superior */
+            /*margin-bottom: 2.54cm; !* Margen inferior *!*/
+            margin-left: 2.54cm; /*Margen izquierdo*/
+            margin-right: 2.54cm; /* Margen derecho */
+        }
+
+        .signature hr {
+            width: 50%; /* Ajusta el ancho de la línea para firmar */
+        }
+
+        /*--------------------------------------------------------------------------------------------------------------------*/
+        .box {
+            margin-left: 10%;
+
+        }
+
+        .parrafo_uno {
+            text-align: justify;
+        }
+
+        .certificado {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 5%;
+        }
+
+        .firma {
+            text-align: center;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container" style="text-align: justify;">
+    <div class="image-container" style="display: inline-block; position: relative; text-align: left;">
+        <img src="{{ absolute_url(asset('uploads/iconos/Recurso1.png')) }}" alt="Imagen" class="img-fluid">
+    </div>
+    <div class="box" style="display: inline-block; position: relative; vertical-align: top; text-align: center;">
+        <p class="centered margin-medium" style="font-size: 1.1em;"><b>UNIDAD CLINICA SAN NICOLAS LTDA.</b></p>
+        <p class="centered margin-medium" style="margin: 0">Calle 52 No 17-85
+            Tel: 6225895-3187765427<br>
+            Barrancabermeja – Santander<br>
+            NIT. 900.064.250-4.</p>
+    </div>
+</div>
+
+<div class="contenido">
+    <p class="certificado">CERTIFICACIÓN</p>
+    <p class="parrafo_uno">
+        La Unidad Clínica San Nicolás Ltda., certifica que el señor@ <b>{{ datos.nombres | upper }}</b>identificado con
+        cédula de ciudadanía número {{ datos.tipo_documento }}.{{ datos.numero_id }}
+        de {{ datos.lugar_expedicion }} , labora en esta institución desempeñando el cargo de
+        <b>{{ datos.cargo | upper }}.</b><br><br>
+        Ejecuta a la fecha, labores propias de su cargo, mediante contrato laboral a término fijo,
+        desde el dia {{ datos.fecha_inicial | date('d M Y') }} hasta el dia {{ datos.fecha_final | date('d M Y') }},
+        devengando salario mensual
+        de {{ datos.saldo | format_spellout_number }} pesos (${{ datos.saldo |number_format(0, '.', ',') }}).
+        Con auxilio de transporte de {{ datos.auxilio_transporte | format_spellout_number }} pesos
+        (${{ datos.auxilio_transporte  |number_format(0, '.', ',') }}).<br><br>
+        La presente se expide en Barrancabermeja, a solicitud del interesado, el dia
+        ({{ fecha | date('d') }}) de {{ fecha | date('F Y') }}.<br><br>
+        Agradezco la atención prestada.<br><br>L
+        Cordialmente,
+    </p><br><br><br><br><br><br>
+    <div class="firma" style="position: relative;">
+        <img src="{{ absolute_url(asset('uploads/iconos/firma_eunice.png')) }}" alt=""
+             style="position: absolute; top: -51px; left: 50%; transform: translateX(-50%); width: 230px;">
+        <hr style="border-top: 2px solid black; width: 8cm; margin: 0 auto;">
+        <p class="agg" style="margin: 0;"><b>EUNICE ANGARITA GALVIS</b></p>
+        <p class="agg" style="margin: 0;">Representante Legal Suplente</p>
+    </div>
+    <div style="height: 52mm;"></div>
+    <div style="bottom: 0; width: 100%; text-align: center;">
+        <hr style="border-top: 2px solid #1dc7c2; width: 10cm; margin: 0 auto;">
+        <p style="text-align: center; font-family: 'Monotype Corsiva', cursive;">El cliente es el eje de nuestra
+            institución</p>
+    </div>
+</div>
+
+</body>
+</html>

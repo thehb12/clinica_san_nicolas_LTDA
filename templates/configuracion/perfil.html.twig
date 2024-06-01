@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+{% block title %}Perfil!{% endblock %}
+{% block content %}
+    <script src="{{ asset('js/configuracion/perfil.js') }}?1221" type="text/javascript"></script>
+    <script type="text/javascript">
+        const path_crud = "{{ path('app_configuracion_perfil_crud') }}";
+        const ListarPerfil = "{{ path('app_configuracion_perfil_lista') }}";
+        const path_redirect = '{{ path('app_dashboard') }}';
+        const path_foto_default = '{{ asset('uploads/default/photo.jpg')}}'
+        document.addEventListener("DOMContentLoaded", async () => {
+           await inicioPerfil();
+        });
+    </script>
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: #fff;
+            font-weight: bold;
+        }
+    </style>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Perfil de usuario</h5>
+                            <!-- Vertical Form -->
+                            <form class="row g-3 needs-validation" novalidate id="form_perfil" onsubmit="guardarRegistro(event)">
+                                <input type="hidden" id="id" name="id" value="0"/>
+                                <div class="col-3">
+                                </div>
+                                <div class="col-6">
+                                    <div class="card" style="width: 16rem;">
+                                        <img id="imagen_trabajador" height="200px;" class="card-img-top"
+                                             alt="Foto Trabajador" src="">
+                                        <div class="card-body">
+                                            <h5 style="text-align: center;" class="card-title">Foto</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="correo" class="form-label">Correo Electrónico</label>
+                                    <input class="form-control" type="text" id="correo" name="correo" required>
+                                    <div class="invalid-feedback">Por favor ingresa un correo electrónico válido.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input class="form-control" type="text" id="nombre" name="nombre" required>
+                                    <div class="invalid-feedback">Por favor ingresa un nombre válido.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="telefono" class="form-label">Teléfono</label>
+                                    <input class="form-control" type="text" id="telefono" name="telefono">
+                                    <div class="invalid-feedback">Por favor ingresa un número de teléfono válido.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="direccion" class="form-label">Dirección</label>
+                                    <input class="form-control" type="text" id="direccion" name="direccion">
+                                    <div class="invalid-feedback">Por favor ingresa una dirección válida.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <b><small><label for="foto" class="form-label">Foto Trabajador:</label>
+                                        </small></b>
+                                    <div class="input-group">
+                                        <input class="form-control" type="file" accept="imagen/*" name="foto" id="foto">
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary" >Guardar</button>
+                                    <button type="reset" class="btn btn-secondary">Borrar</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    codigos_usuarios
+{% endblock %}
+{% block content %}
+    <script src="{{ asset('js/configuracion/codigos_usuarios.js') }}?2553" type="text/javascript"></script>
+    <script type="text/javascript">
+        const path_lista_tabla_codigos_usuarios = '{{ path('app_configuracion_codigos_usuarios_page') }}'
+        document.addEventListener("DOMContentLoaded", () => {
+            initTabla_Codigos_Usuarios();
+        });
+    </script>
+    <div class="container-fluid">
+        <div class="row">
+            <h5 class="text-muted">Modulo Codigos Usuarios</h5>
+        </div>
+        <table id="table_codigos_usuarios" class="estilos_generales"
+               style="width: auto">
+        </table>
+    </div>
+
+{% endblock %}

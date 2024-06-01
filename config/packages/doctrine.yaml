@@ -22,6 +22,21 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
+        controller_resolver:
+            auto_mapping: true
+
+        dql:
+            numeric_functions:
+                time_diff: App\Services\DQL\TimeDiff
+            string_functions:
+                DAY: App\Services\DQL\Day
+                DATE_FORMAT: App\Services\DQL\DateFormat
+                MONTH: App\Services\DQL\Month
+                YEAR: App\Services\DQL\Year
+                ifnull: App\Services\DQL\IfNull
+                group_concat: App\Services\DQL\GroupConcat
+                CONCAT_WS: App\Services\DQL\ConcatWs
+
 
 when@test:
     doctrine:

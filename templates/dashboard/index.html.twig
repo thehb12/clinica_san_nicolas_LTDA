@@ -1,0 +1,235 @@
+{% extends 'base.html.twig' %}
+{% block title %}Bienvenido{% endblock %}
+{% block content %}
+    <script src="{{ asset('js/configuracion/dashboard.js') }}?111112" type="text/javascript"></script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", async () => {
+            await inicioDashboard();
+        });
+    </script>
+    <style>
+        .icon {
+            color: #3cb3c3; /* Cambiar el color de los iconos */
+        }
+    </style>
+    {% if 'ROLE_ADMIN' in app.user.roles %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <section id="bienvenida">
+                    <h2>Bienvenido a la Plataforma de Administración</h2>
+                    <p>
+                        Aquí puedes administrar a los trabajadores, ver listados y llevar a cabo otras tareas de gestión.
+                    </p>
+
+                    <p>
+                        Información del Software y Desarrollador:
+                    </p>
+                    <div class="ims">
+                        <span style="padding-left: 3%;">Software Web U C S N</span>
+                    </div>
+                    <!-- Agregar aquí el código para el modal -->
+                    <div id="myModal" class="modal">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <!-- Botón para cerrar el modal -->
+                                <span class="close" onclick="cerrarModal()">&times;</span>
+                                <!-- Contenido del modal -->
+                                <div class="modal-body">
+                                    <div class="profile-container text-center">
+                                        <!-- Imagen de perfil -->
+                                        <img src="{{ asset('uploads/fotos/Foto.jpg') }}" alt="Foto de perfil" class="profile-pic img-fluid zoom-img" style="max-width: 150px;">
+                                        <div class="modal-text">
+                                            <!-- Información del desarrollador -->
+                                            <h2>Julian Esteban Hernandez Bohorquez</h2>
+                                            <p>Analista y Desarrollador de Software</p>
+                                            <p>Desarrollé esta aplicación Web.</p>
+                                            <p>Contacto: <a href="tel:+57 3054671363">+57 3054671363</a></p>
+                                            <p>Perfil como Desarrollador: <a href="https://github.com/thehb12" target="_blank">GitHub</a></p>
+                                        </div>
+                                        <!-- Logo del estudio -->
+                                        <div class="logo-container">
+                                            <img src="{{ asset('uploads/fotos/ADSOFINAL2.png') }}" alt="Logo del estudio" class="logo img-fluid zoom-img" style="max-width: 60px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Botón que activa el modal -->
+                    <a href="#" class="ims" onclick="mostrarModal()">
+                        <img style="height: 50px; cursor: pointer;" src="{{ asset('uploads/fotos/ADSOFINAL2.png') }}" alt="">
+                        <span>Julian Hernandez</span>
+                    </a>
+                </section>
+            </div>
+{#            <div class="col-md-7">#}
+{#                <section id="descripcion">#}
+{#                    <h2>Descripción de Botones y Tablas</h2>#}
+{#                    <h3>Botones Principales</h3>#}
+{#                    <ul>#}
+{#                        <li>#}
+{#                            <span class="icon"><i class="fas fa-home"></i></span>#}
+{#                            Home: Inicio, muestra como es la navegacion de la pagina administrador y usuario#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <span class="icon"><i class="fas fa-user-plus"></i></span>#}
+{#                            Agregar Trabajador: Permite agregar un nuevo trabajador a la base de datos.#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <span class="icon"><i class="fas fa-users"></i></span>#}
+{#                            Ver Personal: Muestra el listado de todos los trabajadores.#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <span class="icon"><i class="fas fa-lock"></i></span>#}
+{#                           Cambio de Contraseña: Permite al usuario cambiar su Contraseña#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <span class="icon"><i class="fas fa-trash-alt"></i></span>#}
+{#                            Eliminar Trabajador: Permite eliminar un trabajador de la base de datos.#}
+{#                        </li>#}
+{#                        <li><span class="icon"><i class="fas fa-sign-out-alt"></i></span>#}
+{#                           Cerrar Sesión#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                    <h3>Tablas Clave</h3>#}
+{#                    <p>#}
+{#                        La tabla principal de trabajadores muestra los siguientes campos: ID, nombres, tipo de id, número de id,#}
+{#                        lugar, cargo, correo, fecha inicial, fecha final, saldo, auxilio y estado del trabajador (activo o#}
+{#                        inactivo).#}
+{#                        Puedes ordenar la tabla haciendo clic en los encabezados y utilizar la función de búsqueda para encontrar#}
+{#                        trabajadores específicos.#}
+{#                    </p>#}
+{#                </section>#}
+{#            </div>#}
+        </div>
+    </div>
+    {% else %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <section id="bienvenida">
+                    <h2>Bienvenido a la Plataforma de Usuarios</h2>
+                    <p>
+                        Aquí puedes ver y descargar tu certiicado laboral, la no renovacion de contrato y el periodo de vacaciones.
+                    </p>
+{#                    <p>#}
+{#                        A continuación, encontrarás videos explicativos sobre cómo utilizar las principales funcionalidades de la#}
+{#                        página y una descripción de los botones y tablas.#}
+{#                    </p>#}
+                    <p>
+                        Información del Software y Desarrollador:
+                    </p>
+                    <div class="ims">
+                        <span style="padding-left: 3%;">Software Web U C S N</span>
+                    </div>
+                    <!-- Agregar aquí el código para el modal -->
+                    <div id="myModal" class="modal">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <!-- Botón para cerrar el modal -->
+                                <span class="close" onclick="cerrarModal()">&times;</span>
+                                <!-- Contenido del modal -->
+                                <div class="modal-body">
+                                    <div class="profile-container text-center">
+                                        <!-- Imagen de perfil -->
+                                        <img src="{{ asset('uploads/fotos/Foto.jpg') }}" alt="Foto de perfil" class="profile-pic img-fluid zoom-img" style="max-width: 150px;">
+                                        <div class="modal-text">
+                                            <!-- Información del desarrollador -->
+                                            <h2>Julian Esteban Hernandez Bohorquez</h2>
+                                            <p>Analista y Desarrollador de Software</p>
+                                            <p>Desarrollé esta aplicación Web.</p>
+                                            <p>Contacto: <a href="tel:+57 3054671363">+57 3054671363</a></p>
+                                            <p>Perfil como Desarrollador: <a href="https://github.com/thehb12" target="_blank">GitHub</a></p>
+                                        </div>
+                                        <!-- Logo del estudio -->
+                                        <div class="logo-container">
+                                            <img src="{{ asset('uploads/fotos/ADSOFINAL2.png') }}" alt="Logo del estudio" class="logo img-fluid zoom-img" style="max-width: 60px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Botón que activa el modal -->
+                    <a href="#" class="ims" onclick="mostrarModal()">
+                        <img style="height: 50px; cursor: pointer;" src="{{ asset('uploads/fotos/ADSOFINAL2.png') }}" alt="">
+                        <span>Julian Hernandez</span>
+                    </a>
+                </section>
+            </div>
+{#            <div class="col-md-7">#}
+{#                <section id="descripcion">#}
+{#                    <h2>Descripción de Botones y Tablas</h2>#}
+{#                    <h3>Botones Principales</h3>#}
+{#                    <ul>#}
+{#                        <li>#}
+{#                            <span class="icon"><i class="fas fa-home"></i></span>#}
+{#                            Home: Inicio, muestra como es la navegacion de la pagina usuario#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <span class="icon"><i class="fas fa-file-pdf"></i></span>#}
+{#                            Certificados: Esta sección te permite descargar el certificado que necesites.#}
+{#                            Datos personales.#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <span class="icon"><i class="fas fa-lock"></i></span>#}
+{#                            Cambio de Contraseña: Permite al usuario cambiar su Contraseña#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>#}
+{#                            Cerrar Sesión#}
+{#                        </li>#}
+{#                    </ul>#}
+
+{#                    <h3>Sección Certificados</h3>#}
+{#                    <p>Cuando entres al icono de PDF podrás ver tu contrato laboral, a tu izquierda encontrarás un botón desplegable#}
+{#                        y al darle click se enlistarán todos los certificados que ofrece nuestra clínica#}
+{#                    </p>#}
+{#                </section>#}
+
+{#            </div>#}
+        </div>
+    </div>
+    {% endif %}
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setTimeout(function () {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 6000
+                };
+                toastr.success('{{ user.trabajadores.nombres }}', 'Bienvenido a UCSN');
+            }, 1300);
+        });
+
+        // Función para mostrar el modal
+        function mostrarModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+        }
+
+        // Función para cerrar el modal
+        function cerrarModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        // Event listener para cerrar el modal haciendo clic fuera de él
+        window.onclick = function(event) {
+            var modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    </script>
+{% endblock %}

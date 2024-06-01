@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vacaciones</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+
+            height: 6%;
+        }
+
+
+        .image-container img {
+            width: 90px; /* Ajusta el tamaño de la imagen según sea necesario */
+            height: auto; /* Mantiene la proporción de aspecto */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Apila los elementos verticalmente en dispositivos pequeños */
+            }
+
+            .text-container {
+                margin: 10px 100px; /* Agrega un espacio entre la imagen y el texto en dispositivos pequeños */
+            }
+        }
+
+        .contenido {
+            margin-top: 2.54cm; /* Margen superior */
+            /*margin-bottom: 2.54cm; !* Margen inferior *!*/
+            margin-left: 2.54cm; /*Margen izquierdo*/
+            margin-right: 2.54cm; /* Margen derecho */
+        }
+
+        .signature {
+            text-align: center; /* Centra el texto de la firma */
+            margin-top: 20px; /* Agrega espacio sobre la firma */
+        }
+
+        .signature hr {
+            width: 50%; /* Ajusta el ancho de la línea para firmar */
+        }
+
+        .text-justify {
+            text-align: justify; /* Justifica el texto */
+        }
+
+        .text-right {
+            text-align: right; /* Alinea el texto a la derecha */
+        }
+
+        .text-center {
+            text-align: center; /* Alinea el texto al centro */
+        }
+
+        /*--------------------------------------------------------------------------------------------------------------------*/
+
+        .certif {
+            text-align: left;
+
+        }
+
+        .box {
+            margin-left: 10%;
+        }
+
+        .parrafo_uno{
+            text-align: justify;
+        }
+        .parrafo_dos{
+            text-align: justify;
+            font-weight: bold;
+            font-size: 16px;
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container" style="text-align: justify;">
+    <div class="image-container" style="display: inline-block; position: relative; text-align: left;">
+        <img src="{{ absolute_url(asset('uploads/iconos/Recurso1.png')) }}" alt="Imagen" class="img-fluid">
+    </div>
+    <div class="box" style="display: inline-block; position: relative; vertical-align: top; text-align: center;">
+        <p class="centered margin-medium" style="font-size: 1.1em;"><b>UNIDAD CLINICA SAN NICOLAS LTDA.</b><br>
+            NIT. 900.064.250-4.<br>
+            Barrancabermeja – Santander<br>
+            Calle 52 No 17-85 Uribe Uribe<br>
+            TEL: 6225895- CELULAR: 3187765427</p>
+    </div>
+</div>
+
+<div class="contenido">
+    <p>Barrancabermeja, {{ fecha | date('d F Y') }}</p><br><br>
+
+
+    <p style="margin: 0;"><b>SEÑOR@</b></p>
+    <P style="margin: 0;"><b>{{ datos.nombres|upper }}</b></P>
+    <P style="margin: 0;">{{ datos.numero_id }} de {{ datos.lugar_expedicion }} </P><br><br>
+
+    <p class="certif">
+        <b>Asunto:</b> Programación periodo de vacaciones.<br><br>
+        Cordial Saludo,
+    </p>
+
+    <p class="parrafo_uno">
+        {% set fechaInicial = date(datos.fecha_inicial) %}
+        {% set fechaFinal = date(datos.fecha_final) %}
+
+        {% set diffInSeconds = fechaFinal.getTimestamp - fechaInicial.getTimestamp %}
+        {% set diffInDays = diffInSeconds / 86400 %}
+        {% set diffInYears = diffInDays / 365 %}
+
+        {% if diffInYears >= 1 %}
+
+        {% set fechaActual = "now"|date("d M Y") %}
+        {% set fecha15DiasDespues = "now"|date_modify("+15 days")|date("d M Y") %}
+        Por medio de la presente, la Unidad Clínica San Nicolás Ltda., le informa que se ha tomado la determinación de
+        programar un periodo de vacaciones que podrá disfrutar a partir del dia {{ fechaActual }} y hasta el
+        día {{ fecha15DiasDespues }} Estas vacaciones corresponden al tiempo laborado
+        entre {{ datos.fecha_inicial | date('d M Y') }} al {{ datos.fecha_final | date('d M Y') }} siendo un periodo de
+        12 meses.
+    </p>
+    {% else %}
+      <b class="parrafo_dos">Estimado usuario por reglas del administracion usted no cumple con el tiempo esperado en el contracto.</b>
+    {% endif %}
+    <p>Debe reincorporarse al trabajo, el día veintiséis (26) de abril de 2024, en el horario según programación de
+        turnos de su Área.</p>
+
+    <p>Cordialmente,</p>
+
+    <div style="text-align: left; margin-top: 1cm; position: absolute;">
+        <img src="{{ absolute_url(asset('uploads/iconos/firma_eunice.png')) }}" alt=""
+             style="position: absolute; top: -51px; left: 40%; transform: translateX(-50%); width: 230px;">
+        <hr style="border-top: 2px solid black; width: 8cm; margin: 0 auto;">
+        <p class="agg" style="margin: 0;"><b>EUNICE ANGARITA GALVIS</b></p>
+        <p class="agg" style="margin: 0;">Representante Legal Suplente</p>
+    </div>
+    <div style="height: 52mm;"></div> <!-- Espacio de 7 cm -->
+    <div style="bottom: 0; width: 100%; text-align: center;">
+
+        <p style="text-align: left; margin-top: -1cm;">
+            Recibido: <span style="border-bottom: 1px solid black; display: inline-block; width: 50%;"></span>
+        </p>
+        <p style="text-align: left;">
+            Cc: {{ datos.numero_id }}
+        </p>
+
+        <div style="margin-top: 3cm;">
+            <hr style="border-top: 2px solid #1dc7c2; width: 10cm; margin: 0 auto;">
+            <p style="text-align: center; font-family: 'Monotype Corsiva', cursive;">El cliente es el eje de nuestra
+                institución</p>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>
+
+
+

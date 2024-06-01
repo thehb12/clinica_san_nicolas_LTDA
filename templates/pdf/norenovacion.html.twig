@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Notificacion de no renovacion de contrato</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+
+            height: 6%;
+        }
+
+
+        .image-container img {
+            width: 90px; /* Ajusta el tamaño de la imagen según sea necesario */
+            height: auto; /* Mantiene la proporción de aspecto */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Apila los elementos verticalmente en dispositivos pequeños */
+            }
+
+            .text-container {
+                margin: 10px 100px; /* Agrega un espacio entre la imagen y el texto en dispositivos pequeños */
+            }
+        }
+
+        .contenido {
+            margin-top: 2.54cm; /* Margen superior */
+            /*margin-bottom: 2.54cm; !* Margen inferior *!*/
+            margin-left: 2.54cm; /*Margen izquierdo*/
+            margin-right: 2.54cm; /* Margen derecho */
+        }
+
+        .signature {
+            text-align: center; /* Centra el texto de la firma */
+            margin-top: 20px; /* Agrega espacio sobre la firma */
+        }
+
+        .signature hr {
+            width: 50%; /* Ajusta el ancho de la línea para firmar */
+        }
+
+        .text-justify {
+            text-align: justify; /* Justifica el texto */
+        }
+
+        .text-right {
+            text-align: right; /* Alinea el texto a la derecha */
+        }
+
+        .text-center {
+            text-align: center; /* Alinea el texto al centro */
+        }
+
+        /*--------------------------------------------------------------------------------------------------------------------*/
+
+        .certif {
+            text-align: center;
+            font-size: 1.4em;
+            margin-bottom: 1cm;
+        }
+
+        .box {
+            margin-left: 10%;
+        }
+        .parrafo_uno{
+            text-align: justify;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container" style="text-align: justify;">
+    <div class="image-container" style="display: inline-block; position: relative; text-align: left;">
+        <img src="{{ absolute_url(asset('uploads/iconos/Recurso1.png')) }}" alt="Imagen" class="img-fluid">
+    </div>
+    <div class="box" style="display: inline-block; position: relative; vertical-align: top; text-align: center;">
+        <p class="centered margin-medium" style="font-size: 1.1em;"><b>UNIDAD CLINICA SAN NICOLAS LTDA.</b></p>
+        <p class="centered margin-medium" style="margin: 0">Calle 52 No 17-85
+            Tel: 6225895-3187765427<br>
+            Barrancabermeja – Santander<br>
+            NIT. 900.064.250-4.</p>
+    </div>
+</div>
+
+<div class="contenido">
+    <p>Barrancabermeja, {{ fecha | date('d F Y') }}</p>
+    <p style="margin: 0;"><b>SEÑOR@</b></p>
+    <P style="margin: 0;"><b>{{ datos.nombres|upper }}</b></P>
+    <p style="margin: 0;"><b>CC:{{ datos.numero_id }} de {{ datos.lugar_expedicion }}</b></p><br>
+    <p>{{ datos.cargo }}<br>
+        Unidad Clinica San Nicolas -UCSN- <br>
+        E .S .M.</p>
+    <div style="text-align: center;">
+        <p>Asunto: <b>Notificación de no renovación del contrato de trabajo.</b><br></p>
+    </div>
+
+    <p class="parrafo_uno">En cumplimiento de lo establecido en el numeral 1 del artículo 46 del Código Sustantivo del Trabajo, me permito
+        informarle que hemos tomado la determinación de no renovar su contrato de trabajo a término fijo suscrito el día
+        {{ datos.fecha_inicial | date('d M Y') }}, que, de acuerdo con el encabezado, las cláusulas pactadas y
+        renovaciones
+        presentadas, finaliza el próximo {{ datos.fecha_final | date('d M Y') }}.</p>
+
+    <p class="parrafo_uno">Agradecemos su disposición para trabajar en nuestra entidad durante el tiempo faltante del vínculo laboral.</p>
+
+    <p class="parrafo_uno">En lo que respecta al pago de las acreencias laborales y prestaciones sociales, me permito informarle que, una
+        vez finalizado el contrato, el área de contabilidad tendrá disponible a la mayor brevedad posible, su
+        liquidación de prestaciones sociales y salario percibido, los cuales serán consignados a su cuenta bancaria.</p>
+
+    <p class="parrafo_uno">De igual forma, a la finalización del contrato se le hará entrega de la orden para la práctica del examen médico
+        de egreso y la constancia laboral.</p>
+
+    <p class="parrafo_uno">De antemano, muchas gracias por su atención prestada y por su desempeño en la entidad durante el tiempo laborado,
+        le deseamos los mejores resultados en los nuevos proyectos laborales que decida emprender.</p>
+
+    <p>Atentamente:</p><br><br><br>
+
+
+    <div style="position: relative;">
+        <img src="{{ absolute_url(asset('uploads/iconos/firma_eunice.png')) }}" alt=""
+             style="position: absolute; top: -34px; left: 0; width: 230px;">
+        <hr style="border-top: 2px solid black; width: 6cm; margin-left: 0;">
+        <p class="agg" style="margin: 0; position: absolute; top: 15px; left: 0;"><b>EUNICE ANGARITA GALVIS</b></p>
+        <p class="agg" style="margin: 0; position: absolute; top: 25px; left: 0;">Representante Legal Suplente</p>
+    </div>
+
+    <p style="text-align: right; margin-top: -0.5cm;">
+        Recibido: <span style="border-bottom: 1px solid black; display: inline-block; width: 40%;"></span><br>
+    <p style="text-align: center; margin-top: -0.4cm; margin-left: 3cm;">CC:{{ datos.numero_id }}</p>
+    </p>
+</div>
+
+</body>
+</html>

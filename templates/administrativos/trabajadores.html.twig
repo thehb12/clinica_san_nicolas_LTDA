@@ -1,0 +1,185 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trabajadores!{% endblock %}
+ {% block content %}
+     <script src="{{ asset('js/administrativos/trabajadores.js') }}?1672"></script>
+
+     <script type="text/javascript">
+         const path_foto_default = '{{ asset('uploads/default/photo.jpg')}}'
+         document.addEventListener("DOMContentLoaded", async () => {
+             await inicioCrud_trabajadores();
+             await initTabla_trabajadores();
+         })
+     </script>
+
+     <div class="modal fade" id="modal_trabajador">
+         <div class="modal-dialog modal-lg ">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <h5 class="modal-title">MODULO TRABAJADORES</h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                 </div>
+                 <div class="modal-body">
+                     <div class="container-fluid">
+                         <form id="trabajadores_form" class="row g-3 needs-validation" novalidate
+                               onsubmit="guardarFormTrabajadores(event)">
+                             <input type="hidden" value="0" name="id" id="id">
+                             <div class="d-flex justify-content-center align-items-center">
+                                 <div class="card" style="width: 16rem;">
+                                     <img id="imagen_trabajador" height="230px;" class="card-img-top" alt="Foto Producto" src="">
+                                     <div class="card-body text-center">
+                                         <h5 class="card-title">Foto</h5>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <small><b><label for="nombres" class="form-label">Nombres:</label>
+                                         <span class="required" style="color: red"
+                                               title="Campo Obligatorio">*</span></b></small>
+                                 <div class="input-group">
+                                     <input type="text" class="form-control" id="nombres" name="nombres" required>
+                                     <div class="invalid-feedback">Por favor ingresa los nombres.</div>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <small><b><label for="email" class="form-label">Email:</label>
+                                         <span class="required" style="color: red"
+                                               title="Campo Obligatorio">*</span></b></small>
+                                 <div class="input-group">
+                                     <input type="email" class="form-control" id="email" name="email" required>
+                                     <div class="invalid-feedback">Por favor ingresa un email válido.</div>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <small><b><label for="direccion" class="form-label">Dirección:</label>
+                                         <span class="required" style="color: red"
+                                               title="Campo Obligatorio">*</span></b></small>
+                                 <div class="input-group">
+                                     <input type="text" class="form-control" id="direccion" name="direccion" required>
+                                     <div class="invalid-feedback">Por favor ingresa una dirección.</div>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <small><b><label for="telefono" class="form-label">Teléfono:</label>
+                                         <span class="required" style="color: red"
+                                               title="Campo Obligatorio">*</span></b></small>
+                                 <div class="input-group">
+                                     <input type="number" class="form-control" id="telefono" name="telefono">
+                                     <div class="invalid-feedback">Por favor ingresa un teléfono válido.</div>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <small><b><label for="tipo" class="form-label">Tipo de documento:</label>
+                                         <span class="required" style="color: red"
+                                               title="Campo Obligatorio">*</span></b></small>
+                                 <div class="input-group">
+                                     <input type="text" class="form-control" id="tipo" name="tipo">
+                                     <div class="invalid-feedback">Por favor ingresa el tipo de documento.</div>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <small><b><label for="numero_id" class="form-label">Número de ID:</label>
+                                         <span class="required" style="color: red"
+                                               title="Campo Obligatorio">*</span></b></small>
+                                 <div class="input-group">
+                                     <input type="text" class="form-control" id="numero_id" name="numero_id">
+                                     <div class="invalid-feedback">Por favor ingresa un número de ID válido.</div>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <small><b><label for="lugar_expedicion" class="form-label">Lugar de Expedición:</label>
+                                         <span class="required" style="color: red"
+                                               title="Campo Obligatorio">*</span></b></small>
+                                 <div class="input-group">
+                                     <input type="text" class="form-control" id="lugar_expedicion"
+                                            name="lugar_expedicion">
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <small><b><label for="cargo" class="form-label">Cargo:</label>
+                                         <span class="required" style="color: red"
+                                               title="Campo Obligatorio">*</span></b></small>
+                                 <div class="input-group">
+                                     <input type="text" class="form-control" id="cargo" name="cargo">
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <small><b><label for="fecha_inicial" class="form-label">Fecha de Inicio:</label>
+                                        </b></small>
+                                 <div class="input-group">
+                                     <input type="date" class="form-control" id="fecha_inicial" name="fecha_inicial">
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <small><b><label for="fecha_final" class="form-label">Fecha de Fin:</label>
+                                       </b></small>
+                                 <div class="input-group">
+                                     <input type="date" class="form-control" id="fecha_final" name="fecha_final">
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <small><b><label for="saldo" class="form-label">Saldo:</label>
+                                         <span class="required" style="color: red"
+                                               title="Campo Obligatorio">*</span></b></small>
+                                 <div class="input-group">
+                                     <input type="number" class="form-control" id="saldo" name="saldo">
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <small><b><label for="auxt" class="form-label">Auxiliar de Transporte:</label>
+                                        </b></small>
+                                 <div class="input-group">
+                                     <input type="text" class="form-control" id="auxt" name="auxt">
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <b><small><label for="foto" class="form-label">Foto Trabajador:</label>
+                                     </small></b>
+                                 <div class="input-group">
+                                     <input class="form-control" type="file" accept="imagen/*" name="foto" id="foto">
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <small><b><label for="estado" class="form-label">Estado:</label>
+                                         <span class="required" style="color: red"
+                                               title="Campo Obligatorio">*</span></b></small>
+                                 <div class="input-group">
+                                     <select class="form-select" name="estado" id="estado" required>
+                                         <option value="1">Activo</option>
+                                         <option value="2">Inactivo</option>
+                                     </select>
+                                     <div class="invalid-feedback">Por favor selecciona un estado válido.</div>
+                                 </div>
+                             </div>
+                             <div class="col-md-12 mt-3 mb-4">
+                                 <button type="submit" id="btn_guardar_form" class="btn btn-outline-success btn-sm">
+                                     Guardar
+                                 </button>
+                                 <button type="reset" id="btn_reset_form" class="btn btn-outline-secondary btn-sm">
+                                     Limpiar
+                                 </button>
+                             </div>
+                         </form>
+                     </div>
+
+                 </div>
+                 <div class="modal-footer" id="estado_accion">
+
+                 </div>
+
+             </div>
+         </div>
+     </div>
+     <div class="container-fluid">
+         <div class="row">
+             <h5 class="text-muted">LISTADO GRUPO TRABAJADORES</h5>
+         </div>
+         <table id="table_trabajadores" class="estilos_generales"
+                style="width: auto">
+         </table>
+     </div>
+
+ {% endblock %}
+
+
+

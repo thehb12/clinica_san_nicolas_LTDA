@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Certificado Laboral!{% endblock %}
+{% block content %}
+    <script src="{{ asset('js/administrativos/certificado_laboral.js') }}?1452"></script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
+                <h4>Ceritficado Laboral</h4>
+                <p style="color: red; font-weight: bold;">La imagen de fondo es una muestra!</p>
+                <button onclick="descargarPDF()" class="btn btn-primary mt-3">Descargar PDF</button>
+                <img src="{{ asset('uploads/iconos/certificado_laboral.jpg') }}" alt="Foto del usuario" class="img-fluid mt-5" onclick="mostrarAlert()">
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

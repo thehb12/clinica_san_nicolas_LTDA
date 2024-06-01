@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+{% block title %}Usuarios{% endblock %}
+{% block content %}
+    <script src="{{ asset('js/configuracion/usuarios.js') }}?1632" type="text/javascript"></script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", () => {
+            initTabla_usuarios();
+            inicioCrud_usuarios();
+        });
+    </script>
+    <div class="modal fade" id="modal_usuario">
+        <div class="modal-dialog modal-lg ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <form id="usuarios_form" class="row g-3 needs-validation" novalidate onsubmit="guardarFormUsuarios(event)">
+                            <input type="hidden" value="0" name="id" id="id">
+                            <div class="col-6">
+                                <label for="nombre" class="form-label">Nombre:</label>
+                                <span class="required" style="color: red">*</span>
+                                <input class="form-control" type="text" name="nombre" id="nombre" required>
+                                <div class="invalid-feedback">Por favor ingresa un nombre.</div>
+                            </div>
+                            <div class="col-6">
+                                <label for="correo" class="form-label">Correo:</label>
+                                <span class="required" style="color: red">*</span>
+                                <input class="form-control" type="email" name="correo" id="correo" required>
+                                <div  class="invalid-feedback">Por favor ingresa un correo válido.</div>
+                            </div>
+                            <div class="col-6">
+                                <label for="contrasena" class="form-label">Contraseña:</label>
+                                <span class="required" style="color: red">*</span>
+                                <input class="form-control" type="password" name="contrasena" id="contrasena" autocomplete="contrasena" required>
+                                <div class="invalid-feedback">Por favor ingresa una contraseña.</div>
+                            </div>
+                            <div class="col-6">
+                                <label for="confirmar_contrasena" class="form-label">Confirmar Contraseña:</label>
+                                <span class="required" style="color: red">*</span>
+                                <input class="form-control" type="password" name="confirmar_contrasena" autocomplete="confirmar_contrasena" id="confirmar_contrasena" required>
+                                <div  class="invalid-feedback">Por favor confirma tu contraseña.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="estado" class="form-label">Estado:</label>
+                                <span class="required" style="color: red">*</span>
+                                <select class="form-select" name="estado" id="estado" required>
+                                    <option value="1">Activo</option>
+                                    <option value="2">Inactivo</option>
+                                </select>
+                                <div class="invalid-feedback">Por favor selecciona un estado.</div>
+                            </div>
+                            <div class="col-md-12 mt-3 mb-4">
+                                <button type="submit" id="btn_guardar_form" class="btn btn-success btn-sm">Guardar</button>
+                                <button type="reset" id="btn_reset_form" class="btn btn-secondary btn-sm">Limpiar</button>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer" id="estado_accion">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <h5 class="text-muted">LISTADO GRUPO USUARIOS</h5>
+        </div>
+        <table id="table_usuarios" class="estilos_generales"
+               style="width: auto">
+        </table>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+<aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+            <a class="nav-link " href="{{ path('app_dashboard') }}">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        {% if 'ROLE_ADMIN' in app.user.roles %}
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#administrativo" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Personal</span><i
+                            class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="administrativo" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ path('app_administrativos_trabajadores_index') }}">
+                            <i class="bi bi-circle"></i><span>Trabajadores</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#configuracion" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-gear-fill"></i><span>Configuración</span><i
+                            class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="configuracion" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ path('app_configuracion_usuarios_index') }}">
+                            <i class="bi bi-circle"></i><span>Usuarios</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#certificado" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-bar-chart-line-fill"></i><span>Certificados</span><i
+                            class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="certificado" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{path('app_administrativos_vacaciones_index')}}">
+                            <i class="bi bi-circle"></i><span>Vacaciones</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{path('app_administrativos_no_renovacion_index')}}">
+                            <i class="bi bi-circle"></i><span>Notificacion de no renovacion de contrato</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#administrativo" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-bar-chart-line-fill"></i><span>Certificados</span><i
+                            class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="administrativo" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{path('app_administrativos_certificado_laboral_index')}}">
+                            <i class="bi bi-circle"></i><span>Certificado Laboral</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        {% endif %}
+    </ul>
+</aside>

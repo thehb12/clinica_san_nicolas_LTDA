@@ -1,56 +1,55 @@
 {
-    "name": "sk",
-    "options": {
-      "months": [
-        "Január",
-        "Február",
-        "Marec",
-        "Apríl",
-        "Máj",
-        "Jún",
-        "Júl",
-        "August",
-        "September",
-        "Október",
-        "November",
-        "December"
-      ],
-      "shortMonths": [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "Máj",
-        "Jún",
-        "Júl",
-        "Aug",
-        "Sep",
-        "Okt",
-        "Nov",
-        "Dec"
-      ],
-      "days": [
-        "Nedeľa",
-        "Pondelok",
-        "Utorok",
-        "Streda",
-        "Štvrtok",
-        "Piatok",
-        "Sobota"
-      ],
-      "shortDays": ["Ne", "Po", "Ut", "St", "Št", "Pi", "So"],
-      "toolbar": {
-        "exportToSVG": "Stiahnuť SVG",
-        "exportToPNG": "Stiahnuť PNG",
-        "exportToCSV": "Stiahnuť CSV",
-        "menu": "Menu",
-        "selection": "Vyberanie",
-        "selectionZoom": "Zoom: Vyberanie",
-        "zoomIn": "Zoom: Priblížiť",
-        "zoomOut": "Zoom: Vzdialiť",
-        "pan": "Presúvanie",
-        "reset": "Resetovať"
-      }
+  "name": "sl",
+  "options": {
+    "months": [
+      "Januar",
+      "Februar",
+      "Marec",
+      "April",
+      "Maj",
+      "Junij",
+      "Julij",
+      "Avgust",
+      "Septemer",
+      "Oktober",
+      "November",
+      "December"
+    ],
+    "shortMonths": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "Maj",
+      "Jun",
+      "Jul",
+      "Avg",
+      "Sep",
+      "Okt",
+      "Nov",
+      "Dec"
+    ],
+    "days": [
+      "Nedelja",
+      "Ponedeljek",
+      "Torek",
+      "Sreda",
+      "Četrtek",
+      "Petek",
+      "Sobota"
+    ],
+    "shortDays": ["Ne", "Po", "To", "Sr", "Če", "Pe", "So"],
+    "toolbar": {
+      "exportToSVG": "Prenesi SVG",
+      "exportToPNG": "Prenesi PNG",
+      "exportToCSV": "Prenesi CSV",
+      "menu": "Menu",
+      "selection": "Izbiranje",
+      "selectionZoom": "Zoom: Izbira",
+      "zoomIn": "Zoom: Približaj",
+      "zoomOut": "Zoom: Oddalji",
+      "pan": "Pomikanje",
+      "reset": "Resetiraj"
     }
   }
-  
+}
